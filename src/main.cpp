@@ -1,5 +1,6 @@
-#include <iostream>
+#include "component.h"
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Page page;
+    page.print();
     return 0;
 }
