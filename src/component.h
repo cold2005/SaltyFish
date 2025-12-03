@@ -40,10 +40,10 @@ class NameBoard : public Component {
     string name;
 
   public:
-    NameBoard(string _name) : Component(3, 13), name(_name) {
-        (*this)[0] = "*************";
-        (*this)[1] = "*           *";
-        (*this)[2] = "*************";
+    NameBoard(string _name) : Component(3, _name.size() + 4), name(_name) {
+        (*this)[0] = string(width, '*');
+        (*this)[1] = "* " + name + " *";
+        (*this)[2] = string(width, '*');
     }
     void draw() {
         (*this)[1] = "* " + name + " *";
@@ -56,10 +56,50 @@ class Page : public Component {
   public:
     Page() : Component(10, 30) {
         subcomponents.reserve(10);
-        subcomponents.push_back(Subcomponent(new NameBoard("wallcrack"), 0, 0));
-        subcomponents.push_back(Subcomponent(new NameBoard("windchime"), 8, 10));
+        subcomponents.push_back(Subcomponent(new NameBoard("Tom"), 0, 0));
+        subcomponents.push_back(Subcomponent(new NameBoard("Alice"), 7, 10));
+        subcomponents.push_back(Subcomponent(new NameBoard("Bobby"), 3, 10));
     }
     void draw() {
+        for (auto& sub : subcomponents) {
+            sub.component->draw();
+            for (int i = 0; i < sub.component->height && i + sub.x < height; i++) {
+                for (int j = 0; j < sub.component->width && j + sub.y < width; j++) {
+                    (*this)[sub.x + i][sub.y + j] = (*sub.component)[i][j];
+                }
+            }
+        }
+    }
+    void print() {
+        draw();
+        for (int i = 0; i < height; i++) {
+            std::cout << (*this)[i] << "\n";
+        }
+        std::cout << std::endl;
+    }
+};
+class BigerPage : public Component {
+  private:
+    vector<Subcomponent> subcomponents;
+
+  public:
+    BigerPage() : Component(25, 80) {
+        subcomponents.reserve(10);
+        subcomponents.push_back(Subcomponent(new Page(), 1, 1));
+        subcomponents.push_back(Subcomponent(new Page(), 11, 1));
+    }
+    void draw_border() {
+        for (int i = 0; i < height; i++) {
+            (*this)[i][0] = '|';
+            (*this)[i][width - 1] = '|';
+        }
+        for (int j = 0; j < width; j++) {
+            (*this)[0][j] = '-';
+            (*this)[height - 1][j] = '-';
+        }
+    }
+    void draw() {
+        draw_border();
         for (auto& sub : subcomponents) {
             sub.component->draw();
             for (int i = 0; i < sub.component->height && i + sub.x < height; i++) {
