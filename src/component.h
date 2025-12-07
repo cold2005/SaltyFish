@@ -7,6 +7,8 @@ using std::string;
 using std::unique_ptr;
 using std::vector;
 
+namespace Component {
+
 class Component;
 class Subcomponent {
 
@@ -66,11 +68,11 @@ class CatImage : public Component {
   public:
     CatImage() : Component(3, 7) {
         // clang-format off
-        layout = {
-            " /\\_/\\",
-            "( o.o )",
-            " >   < "
-        };
+            layout = {
+                " /\\_/\\",
+                "( o.o )",
+                " >   < "
+            };
         // clang-format on
     }
     void draw() {
@@ -111,3 +113,5 @@ class TestPage : public Component {
         std::cout << std::endl;
     }
 };
+
+} // namespace Component
