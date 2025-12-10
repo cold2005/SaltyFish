@@ -15,7 +15,7 @@ bool Seqlist_Init(Seqlist*L){
     return true;
 }
 
-bool Seqlist_Insert(Seqlist*L,int pos,int data){
+bool Seqlist_Insert(Seqlist*L,int pos,ElemType data){
     if(L==NULL){
         printf("Error:Seqlist is nullptr.\n");
         return false;

@@ -11,15 +11,15 @@ typedef struct{
 
 bool Seqlist_Init(Seqlist*L);
 
-bool Seqlist_Insert(Seqlist*L,int pos,int data);
+bool Seqlist_Insert(Seqlist*L,int pos,ElemType data);
 
-bool Seqlist_DeletePos(Seqlist*L,int pos,int*val);
+bool Seqlist_DeletePos(Seqlist*L,int pos,ElemType* val);
 
-bool Seqlist_DeleteVal(Seqlist*L,int val);
+bool Seqlist_DeleteVal(Seqlist*L,ElemType val);
 
-bool Seqlist_GetPos(Seqlist*L,int pos,int* value);
+bool Seqlist_GetPos(Seqlist*L,int pos,ElemType* value);
 
-int* Seqlist_GetVal(Seqlist* L,int val);
+int* Seqlist_GetVal(Seqlist* L,ElemType*val);
 
 void Seqlist_Print(Seqlist* L);
 
