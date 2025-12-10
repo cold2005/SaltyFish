@@ -5,6 +5,8 @@
 #include<stdlib.h>
 #include<stdbool.h>
 
+#define InitSize 10
+
 typedef int ElemType;
 
 #endif
