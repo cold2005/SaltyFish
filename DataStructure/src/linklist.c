@@ -1,4 +1,4 @@
-#include"linklist.h"
+#include"../head/linklist.h"
 
 bool Linklist_Init(Linklist* L){
     if(L==NULL){
