@@ -18,7 +18,7 @@ LNode* Linklist_CreatNode(ElemType data){
     }
     node ->data = data;
     node ->next = NULL;
-    printf("Success:Linklist_CreatNode,data is %d\n",node->data);
+    printf("Success:Linklist_CreatNode\n");
     return node;
 }
 
@@ -229,6 +229,7 @@ Linklist Linklist_Reverse(Linklist L){
         printf("Error:Can't reverse this list because it is empty.\n");
         return NULL;
     }
+    
     
 }
 int main(void){
